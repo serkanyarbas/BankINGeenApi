@@ -11,4 +11,5 @@ import java.util.List;
 @Repository
 public interface ScenarioRepository extends JpaRepository<Scenario,Long>, JpaSpecificationExecutor<Scenario> {
 
+    List<Scenario> findByMakerRoleId(int roleId);
 }

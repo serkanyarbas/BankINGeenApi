@@ -27,11 +27,11 @@ public class Scenario {
     @Column(name = "FILTER_QUERY")
     private String filterQuery;
 
-    @Column(name = "MAKER_GROUP_ID")
-    private int makerGroupId;
+    @Column(name = "MAKER_ROLE_ID")
+    private int makerRoleId;
 
-    @Column(name = "CHECKER_GROUP_ID")
-    private int checkerGroupId;
+    @Column(name = "CHECKER_ROLE_ID")
+    private int checkerRoleId;
 
     @OneToMany(mappedBy = "scenario")
     private List<ScenarioTableColumn> scenarioTableColumns;
