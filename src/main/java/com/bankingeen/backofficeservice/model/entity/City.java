@@ -1,4 +1,4 @@
-package com.bankingeen.backofficeservice.model;
+package com.bankingeen.backofficeservice.model.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

@@ -1,8 +1,8 @@
 package com.bankingeen.backofficeservice.service;
 
 import com.bankingeen.backofficeservice.jpa.CityRepository;
-import com.bankingeen.backofficeservice.model.*;
-import com.bankingeen.backofficeservice.model.admin.*;
+import com.bankingeen.backofficeservice.model.contract.admin.*;
+import com.bankingeen.backofficeservice.model.entity.City;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -30,7 +30,7 @@ public class AdminService {
         return null;
     }
 
-    public PageCreateResponse pageCreate(PageCreateRequest pageCreateRequest) {
+    public ScenarioCreateResponse pageCreate(ScenarioCreateRequest pageCreateRequest) {
 
         return null;
     }

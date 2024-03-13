@@ -1,6 +1,6 @@
 package com.bankingeen.backofficeservice.controller;
 
-import com.bankingeen.backofficeservice.model.City;
+import com.bankingeen.backofficeservice.model.entity.City;
 import com.bankingeen.backofficeservice.service.CityService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

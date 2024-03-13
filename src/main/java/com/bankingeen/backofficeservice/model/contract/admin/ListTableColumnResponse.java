@@ -1,4 +1,4 @@
-package com.bankingeen.backofficeservice.model.admin;
+package com.bankingeen.backofficeservice.model.contract.admin;
 
 import lombok.Getter;
 import lombok.Setter;
