@@ -5,7 +5,7 @@ import lombok.Setter;
 
 import java.util.List;
 
-public class PageCreateRequest {
+public class ScenarioCreateRequest {
 
     @Getter
     @Setter

@@ -30,7 +30,7 @@ public class AdminController {
     }
 
     @PostMapping(value = "/page/create/v1")
-    public PageCreateResponse pageCreate(PageCreateRequest pageCreateRequest) {
+    public ScenarioCreateResponse pageCreate(ScenarioCreateRequest pageCreateRequest) {
 
         return adminService.pageCreate(pageCreateRequest);
     }

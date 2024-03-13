@@ -30,7 +30,7 @@ public class AdminService {
         return null;
     }
 
-    public PageCreateResponse pageCreate(PageCreateRequest pageCreateRequest) {
+    public ScenarioCreateResponse pageCreate(ScenarioCreateRequest pageCreateRequest) {
 
         return null;
     }
