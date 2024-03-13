@@ -20,7 +20,6 @@ public class AdminController {
     public ListTableResponse getTables(ListTableRequest listTableRequest) {
 
         return adminService.getTables(listTableRequest);
-
     }
 
     @PostMapping(value = "/table/column/list/v1")

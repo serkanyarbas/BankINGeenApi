@@ -1,4 +1,4 @@
 package com.bankingeen.backofficeservice.model.contract.admin;
 
-public class ScenarioCreateResponse {
+public class ScenarioCreateResponse extends BaseResponse{
 }

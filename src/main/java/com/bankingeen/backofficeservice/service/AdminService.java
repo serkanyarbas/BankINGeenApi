@@ -4,7 +4,9 @@ import com.bankingeen.backofficeservice.jpa.BOTableRepository;
 import com.bankingeen.backofficeservice.jpa.ScenarioRepository;
 import com.bankingeen.backofficeservice.jpa.ScenarioTableColumnRepository;
 import com.bankingeen.backofficeservice.model.contract.admin.*;
+import com.bankingeen.backofficeservice.model.entity.BOTable;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
 @Service
 public class AdminService {
@@ -27,8 +29,16 @@ public class AdminService {
 
     public ListTableResponse getTables(ListTableRequest listTableRequest) {
 
+        var response = new ListTableResponse();
 
-        return null;
+        var tables = boTableRepository.findAll();
+
+        if (!CollectionUtils.isEmpty(tables)) {
+
+            response.setTableNames(tables.stream().map(BOTable::getName).toList());
+        }
+
+        return response;
     }
 
     public ListTableColumnResponse getTableColumns(ListTableColumnRequest listTableColumnRequest) {
