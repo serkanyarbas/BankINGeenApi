@@ -1,5 +1,7 @@
 package com.bankingeen.backofficeservice.controller;
 
+import com.bankingeen.backofficeservice.model.contract.maker.GetScenarioRecordListRequest;
+import com.bankingeen.backofficeservice.model.contract.maker.GetScenarioRecordListResponse;
 import com.bankingeen.backofficeservice.model.contract.maker.GetScenarioListRequest;
 import com.bankingeen.backofficeservice.model.contract.maker.GetScenarioListResponse;
 import com.bankingeen.backofficeservice.service.MakerService;
@@ -22,5 +24,12 @@ public class MakerController {
 
 
         return makerService.getScenarioList(request);
+    }
+
+    @PostMapping(value = "/scenario/record/list/v1")
+    public GetScenarioRecordListResponse getScenarioRecordList(GetScenarioRecordListRequest request) {
+
+
+        return makerService.getScenarioRecordList(request);
     }
 }
