@@ -20,6 +20,7 @@ public class CityController {
     }
 
     @GetMapping(value = "/list/v1")
+    //test branch commit
     public ResponseEntity<List<City>> getCities() {
         List<City> cityList = cityService.getCityList();
         return ResponseEntity.ok(cityList);
