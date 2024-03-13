@@ -18,4 +18,16 @@ public class AdminService {
     public List<City> getCityList(){
         return cityRepository.findAll();
     }
+
+    public ListTableResponse getTables(ListTableRequest listTableRequest) {
+
+    }
+
+    public ListTableColumnResponse getTableColumns(ListTableColumnRequest listTableColumnRequest) {
+
+    }
+
+    public PageCreateResponse pageCreate(PageCreateRequest pageCreateRequest) {
+
+    }
 }
