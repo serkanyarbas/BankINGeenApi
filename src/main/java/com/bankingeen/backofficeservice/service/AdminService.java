@@ -5,8 +5,13 @@ import com.bankingeen.backofficeservice.jpa.ScenarioRepository;
 import com.bankingeen.backofficeservice.jpa.ScenarioTableColumnRepository;
 import com.bankingeen.backofficeservice.model.contract.admin.*;
 import com.bankingeen.backofficeservice.model.entity.BOTable;
+import com.bankingeen.backofficeservice.model.entity.Scenario;
+import com.bankingeen.backofficeservice.model.entity.ScenarioTableColumn;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class AdminService {
@@ -19,9 +24,9 @@ public class AdminService {
     private final ScenarioTableColumnRepository scenarioTableColumnRepository;
 
     public AdminService(BOTableRepository boTableRepository
-    ,ScenarioRepository scenarioRepository
-    ,ScenarioTableColumnRepository scenarioTableColumnRepository
-    ){
+            , ScenarioRepository scenarioRepository
+            , ScenarioTableColumnRepository scenarioTableColumnRepository
+    ) {
         this.boTableRepository = boTableRepository;
         this.scenarioRepository = scenarioRepository;
         this.scenarioTableColumnRepository = scenarioTableColumnRepository;
@@ -50,6 +55,19 @@ public class AdminService {
 
         var response = new ScenarioCreateResponse();
 
-        return null;
+        var table = boTableRepository.findByName(request.getTableName());
+
+        Scenario scenario = new Scenario();
+        scenario.setScenarioName(request.getScenarioName());
+        scenario.setTable(table);
+        List<ScenarioTableColumn> scenarioTableColumns = request.getColumns().stream()
+                .map(i -> new ScenarioTableColumn(table, scenario, i.getColumnName()
+                        , i.isEditable(), i.isVisible(), i.isPrimaryKey())).toList();
+
+        scenario.setScenarioTableColumns(scenarioTableColumns);
+
+        scenarioRepository.save(scenario);
+
+        return response;
     }
 }
