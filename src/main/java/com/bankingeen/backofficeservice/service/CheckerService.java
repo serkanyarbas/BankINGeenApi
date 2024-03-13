@@ -66,6 +66,21 @@ public class CheckerService {
 
     public ApproveDeclineResponse approveDecline(ApproveDeclineRequest request) {
 
-        return null;
+        var response = new ApproveDeclineResponse();
+
+        var approvementOpt = approvementRepository.findById(request.getApprovementId());
+
+        if (approvementOpt.isEmpty()) {
+            response.setFailureInfo("9999", "userNotFound");
+            return response;
+        }
+
+        var approvement = approvementOpt.get();
+        approvement.setStatus(request.isApproved() ? "A" : "D");
+        approvement.setCheckerUserId(request.getCheckerUserId());
+
+        approvementRepository.save(approvement);
+
+        return response;
     }
 }
