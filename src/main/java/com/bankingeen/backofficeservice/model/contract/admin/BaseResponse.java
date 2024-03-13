@@ -12,6 +12,10 @@ public class BaseResponse implements Serializable {
     @Setter
     private ResponseHeader responseHeader;
 
+    public BaseResponse() {
+        this.responseHeader = new ResponseHeader();
+    }
+
     public void setFailureInfo(String code, String description) {
 
         responseHeader = new ResponseHeader(false, code, description);

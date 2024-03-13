@@ -17,6 +17,11 @@ public class ResponseHeader {
     @Setter
     private String description;
 
+    public ResponseHeader() {
+
+        this.isSuccess = true;
+    }
+
     public ResponseHeader(boolean isSuccess, String code, String description) {
 
         this.isSuccess = isSuccess;
