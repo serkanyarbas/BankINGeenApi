@@ -21,11 +21,6 @@ public class CheckerController {
         this.checkerService = checkerService;
     }
 
-    @PostMapping(value = "/scenario/list/v1")
-    public GetScenarioListResponse getScenarioList(GetScenarioListRequest request) {
-        return checkerService.getScenarioList(request);
-    }
-
     @PostMapping(value = "/approvement/list/v1")
     public GetApprovementListResponse getApprovementList(GetApprovementListRequest request) {
 

@@ -7,9 +7,13 @@ import com.bankingeen.backofficeservice.model.contract.checker.GetApprovementLis
 import com.bankingeen.backofficeservice.model.contract.checker.GetApprovementListResponse;
 import com.bankingeen.backofficeservice.model.contract.maker.GetScenarioListRequest;
 import com.bankingeen.backofficeservice.model.contract.maker.GetScenarioListResponse;
+import com.bankingeen.backofficeservice.model.dto.ApprovementDTO;
 import com.bankingeen.backofficeservice.model.dto.ScenarioDTO;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class CheckerService {
@@ -29,9 +33,9 @@ public class CheckerService {
         this.approvementRepository = approvementRepository;
     }
 
-    public GetScenarioListResponse getScenarioList(GetScenarioListRequest request) {
+    public GetApprovementListResponse getApprovementList(GetApprovementListRequest request) {
 
-        var response = new GetScenarioListResponse();
+        var response = new GetApprovementListResponse();
 
         var user = boUserRepository.findByUserCode(request.getUserCode());
 
@@ -45,19 +49,9 @@ public class CheckerService {
 
         var scenarioListByRoleId = scenarioRepository.findByMakerRoleId(roleId);
 
-        if (!CollectionUtils.isEmpty(scenarioListByRoleId)) {
-
-            scenarioListByRoleId.stream().map(i -> new ScenarioDTO(i.getId(),i.getScenarioName()
-                    ,i.getTable().getName(),i.getFilterQuery()));
-
-        }
+        List<ApprovementDTO> approvementList = new ArrayList();
 
         return response;
-    }
-
-    public GetApprovementListResponse getApprovementList(GetApprovementListRequest request) {
-
-        return null;
     }
 
     public ApproveDeclineResponse approveDecline(ApproveDeclineRequest request) {
