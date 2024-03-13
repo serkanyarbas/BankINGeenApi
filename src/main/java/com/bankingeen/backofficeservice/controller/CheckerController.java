@@ -7,6 +7,7 @@ import com.bankingeen.backofficeservice.model.contract.checker.GetApprovementLis
 import com.bankingeen.backofficeservice.model.contract.maker.GetScenarioListRequest;
 import com.bankingeen.backofficeservice.model.contract.maker.GetScenarioListResponse;
 import com.bankingeen.backofficeservice.service.CheckerService;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,12 +22,14 @@ public class CheckerController {
         this.checkerService = checkerService;
     }
 
+    @CrossOrigin(origins = "*")
     @PostMapping(value = "/approvement/list/v1")
     public GetApprovementListResponse getApprovementList(GetApprovementListRequest request) {
 
         return checkerService.getApprovementList(request);
     }
 
+    @CrossOrigin(origins = "*")
     @PostMapping(value = "/approve-decline/v1")
     public ApproveDeclineResponse approveDecline(ApproveDeclineRequest request) {
 

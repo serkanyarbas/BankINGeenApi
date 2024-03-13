@@ -1,7 +1,12 @@
 package com.bankingeen.backofficeservice.model.dto;
 
-import java.io.Serializable;
 
-public class ApprovementDTO implements Serializable {
+public record ApprovementDTO(String oldContent,
+                             String newContent,
+                             int makerUserId,
+                             int checkerUserId,
+                             String status) {
+
+
 
 }

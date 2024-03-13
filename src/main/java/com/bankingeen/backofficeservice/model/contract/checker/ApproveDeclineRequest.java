@@ -7,8 +7,11 @@ import lombok.Setter;
 public class ApproveDeclineRequest extends BaseRequest {
 
     @Getter @Setter
-    private String approvementId;
+    private Long approvementId;
 
     @Getter @Setter
     private boolean isApproved;
+
+    @Getter @Setter
+    private int checkerUserId;
 }

@@ -12,6 +12,6 @@ import java.util.List;
 @Repository
 public interface ApprovementRepository extends JpaRepository<Approvement,Long>, JpaSpecificationExecutor<Approvement> {
 
-
+      List<Approvement> findByScenarioId(Long scenarioId);
 
 }
