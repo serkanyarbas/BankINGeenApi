@@ -1,6 +1,6 @@
 package com.bankingeen.backofficeservice.model.contract.admin;
 
-import com.bankingeen.backofficeservice.model.contract.common.Column;
+import com.bankingeen.backofficeservice.model.dto.ColumnDTO;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,5 +10,5 @@ public class ListTableColumnResponse extends BaseResponse {
 
     @Getter
     @Setter
-    private List<Column> tableColumns;
+    private List<ColumnDTO> tableColumns;
 }

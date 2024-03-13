@@ -4,6 +4,7 @@ import com.bankingeen.backofficeservice.jpa.BOTableRepository;
 import com.bankingeen.backofficeservice.jpa.ScenarioRepository;
 import com.bankingeen.backofficeservice.jpa.ScenarioTableColumnRepository;
 import com.bankingeen.backofficeservice.model.contract.admin.*;
+import com.bankingeen.backofficeservice.model.dto.ColumnDTO;
 import com.bankingeen.backofficeservice.model.entity.BOTable;
 import com.bankingeen.backofficeservice.model.entity.Scenario;
 import com.bankingeen.backofficeservice.model.entity.ScenarioTableColumn;
@@ -47,7 +48,18 @@ public class AdminService {
 
     public ListTableColumnResponse getTableColumns(ListTableColumnRequest request) {
 
-        return null;
+        var columnNameList = boTableRepository.findColumnNamesByTableName(request.getTableName());
+
+        var response = new ListTableColumnResponse();
+        response.setTableColumns(generateColumnDTOList(columnNameList));
+
+        return response;
+    }
+
+    private List<ColumnDTO> generateColumnDTOList(List<String> columnList) {
+
+        return columnList.stream()
+                .map(columnName -> new ColumnDTO(columnName, Boolean.FALSE, Boolean.FALSE, Boolean.FALSE)).toList();
     }
 
     public ScenarioCreateResponse scenarioCreate(ScenarioCreateRequest request) {
@@ -60,7 +72,7 @@ public class AdminService {
         scenario.setScenarioName(request.getScenarioName());
         scenario.setTable(table);
         List<ScenarioTableColumn> scenarioTableColumns = request.getColumns().stream()
-                .map(i -> new ScenarioTableColumn(table, scenario, i.getColumnName()
+                .map(i -> new ScenarioTableColumn(table, scenario, i.columnName()
                         , i.isEditable(), i.isVisible(), i.isPrimaryKey())).toList();
         scenario.setScenarioTableColumns(scenarioTableColumns);
         scenario.setMakerGroupId(request.getMakerGroupId());
