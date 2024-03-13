@@ -27,7 +27,7 @@ public class AdminService {
         this.scenarioTableColumnRepository = scenarioTableColumnRepository;
     }
 
-    public ListTableResponse getTables(ListTableRequest listTableRequest) {
+    public ListTableResponse getTables() {
 
         var response = new ListTableResponse();
 
@@ -41,12 +41,14 @@ public class AdminService {
         return response;
     }
 
-    public ListTableColumnResponse getTableColumns(ListTableColumnRequest listTableColumnRequest) {
+    public ListTableColumnResponse getTableColumns(ListTableColumnRequest request) {
 
         return null;
     }
 
-    public ScenarioCreateResponse pageCreate(ScenarioCreateRequest pageCreateRequest) {
+    public ScenarioCreateResponse scenarioCreate(ScenarioCreateRequest request) {
+
+        var response = new ScenarioCreateResponse();
 
         return null;
     }

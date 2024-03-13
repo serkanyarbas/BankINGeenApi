@@ -17,20 +17,20 @@ public class AdminController {
     }
 
     @PostMapping(value = "/table/list/v1")
-    public ListTableResponse getTables(ListTableRequest listTableRequest) {
+    public ListTableResponse getTables() {
 
-        return adminService.getTables(listTableRequest);
+        return adminService.getTables();
     }
 
     @PostMapping(value = "/table/column/list/v1")
-    public ListTableColumnResponse getTableColumns(ListTableColumnRequest listTableColumnRequest) {
+    public ListTableColumnResponse getTableColumns(ListTableColumnRequest request) {
 
-        return adminService.getTableColumns(listTableColumnRequest);
+        return adminService.getTableColumns(request);
     }
 
-    @PostMapping(value = "/page/create/v1")
-    public ScenarioCreateResponse pageCreate(ScenarioCreateRequest pageCreateRequest) {
+    @PostMapping(value = "/scenario/create/v1")
+    public ScenarioCreateResponse scenarioCreate(ScenarioCreateRequest request) {
 
-        return adminService.pageCreate(pageCreateRequest);
+        return adminService.scenarioCreate(request);
     }
 }
