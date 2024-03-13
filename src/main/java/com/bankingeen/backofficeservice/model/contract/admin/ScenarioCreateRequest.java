@@ -1,6 +1,6 @@
 package com.bankingeen.backofficeservice.model.contract.admin;
 
-import com.bankingeen.backofficeservice.model.contract.common.Column;
+import com.bankingeen.backofficeservice.model.dto.ColumnDTO;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,7 +15,7 @@ public class ScenarioCreateRequest extends BaseRequest{
     private String tableName;
 
     @Getter @Setter
-    private List<Column> columns;
+    private List<ColumnDTO> columns;
 
     @Getter @Setter
     private int makerGroupId;
