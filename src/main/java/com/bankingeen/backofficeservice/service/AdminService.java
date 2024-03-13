@@ -1,6 +1,7 @@
 package com.bankingeen.backofficeservice.service;
 
 import com.bankingeen.backofficeservice.jpa.BOTableRepository;
+import com.bankingeen.backofficeservice.jpa.DynamicEntityRepository;
 import com.bankingeen.backofficeservice.jpa.ScenarioRepository;
 import com.bankingeen.backofficeservice.jpa.ScenarioTableColumnRepository;
 import com.bankingeen.backofficeservice.model.contract.admin.*;
@@ -23,13 +24,17 @@ public class AdminService {
 
     private final ScenarioTableColumnRepository scenarioTableColumnRepository;
 
+    private final DynamicEntityRepository dynamicEntityRepository;
+
     public AdminService(BOTableRepository boTableRepository
             , ScenarioRepository scenarioRepository
             , ScenarioTableColumnRepository scenarioTableColumnRepository
+            , DynamicEntityRepository dynamicEntityRepository
     ) {
         this.boTableRepository = boTableRepository;
         this.scenarioRepository = scenarioRepository;
         this.scenarioTableColumnRepository = scenarioTableColumnRepository;
+        this.dynamicEntityRepository = dynamicEntityRepository;
     }
 
     public ListTableResponse getTables() {
@@ -48,7 +53,7 @@ public class AdminService {
 
     public ListTableColumnResponse getTableColumns(ListTableColumnRequest request) {
 
-        var columnNameList = boTableRepository.findColumnNamesByTableName(request.getTableName());
+        var columnNameList = boTableRepository.findColumnNamesByTableNameOrderByOrdinalPositionAsc(request.getTableName());
 
         var response = new ListTableColumnResponse();
         response.setTableColumns(generateColumnDTOList(columnNameList));
@@ -75,8 +80,8 @@ public class AdminService {
                 .map(i -> new ScenarioTableColumn(table, scenario, i.columnName()
                         , i.isEditable(), i.isVisible(), i.isPrimaryKey())).toList();
         scenario.setScenarioTableColumns(scenarioTableColumns);
-        scenario.setMakerGroupId(request.getMakerGroupId());
-        scenario.setCheckerGroupId(request.getCheckerGroupId());
+        scenario.setMakerRoleId(request.getMakerGroupId());
+        scenario.setCheckerRoleId(request.getCheckerGroupId());
 
         scenarioRepository.save(scenario);
 
