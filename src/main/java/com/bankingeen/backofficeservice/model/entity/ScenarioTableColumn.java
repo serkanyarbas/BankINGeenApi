@@ -43,4 +43,8 @@ public class ScenarioTableColumn {
         this.visible = visible;
         this.isPrimaryKey = isPrimaryKey;
     }
+
+    public ScenarioTableColumn() {
+        
+    }
 }

@@ -12,6 +12,6 @@ import java.util.List;
 public interface BOTableRepository  extends JpaRepository<BOTable,Long>, JpaSpecificationExecutor<BOTable> {
     BOTable findByName(String tableName);
 
-    @Query(value = "SELECT column_name FROM information_schema.columns WHERE  table_name = ?1", nativeQuery = true)
-    List<String> findColumnNamesByTableName(String tableName);
+    @Query(value = "SELECT column_name FROM information_schema.columns WHERE  table_name = ?1 ORDER BY ordinal_position ASC", nativeQuery = true)
+    List<String> findColumnNamesByTableNameOrderByOrdinalPositionAsc(String tableName);
 }

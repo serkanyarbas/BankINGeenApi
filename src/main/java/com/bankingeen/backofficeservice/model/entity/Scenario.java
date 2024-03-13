@@ -2,6 +2,7 @@ package com.bankingeen.backofficeservice.model.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
 
 import java.util.List;
 
