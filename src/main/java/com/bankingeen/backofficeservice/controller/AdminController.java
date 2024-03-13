@@ -2,10 +2,7 @@ package com.bankingeen.backofficeservice.controller;
 
 import com.bankingeen.backofficeservice.model.contract.admin.*;
 import com.bankingeen.backofficeservice.service.AdminService;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/admin")
@@ -26,14 +23,14 @@ public class AdminController {
 
     @CrossOrigin(origins = "*")
     @PostMapping(value = "/table/column/list/v1")
-    public ListTableColumnResponse getTableColumns(ListTableColumnRequest request) {
+    public ListTableColumnResponse getTableColumns(@RequestBody ListTableColumnRequest request) {
 
         return adminService.getTableColumns(request);
     }
 
     @CrossOrigin(origins = "*")
     @PostMapping(value = "/scenario/create/v1")
-    public ScenarioCreateResponse scenarioCreate(ScenarioCreateRequest request) {
+    public ScenarioCreateResponse scenarioCreate(@RequestBody ScenarioCreateRequest request) {
 
         return adminService.scenarioCreate(request);
     }

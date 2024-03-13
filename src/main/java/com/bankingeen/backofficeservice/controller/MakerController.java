@@ -2,10 +2,7 @@ package com.bankingeen.backofficeservice.controller;
 
 import com.bankingeen.backofficeservice.model.contract.maker.*;
 import com.bankingeen.backofficeservice.service.MakerService;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/maker")
@@ -26,15 +23,14 @@ public class MakerController {
 
     @CrossOrigin(origins = "*")
     @PostMapping(value = "/scenario/record/list/v1")
-    public GetScenarioRecordListResponse getScenarioRecordList(GetScenarioRecordListRequest request) {
-
+    public GetScenarioRecordListResponse getScenarioRecordList(@RequestBody GetScenarioRecordListRequest request) {
 
         return makerService.getScenarioRecordList(request);
     }
 
     @CrossOrigin(origins = "*")
     @PostMapping(value = "/approvement/v1")
-    public SendForApprovementResponse sendForApprovement(SendForApprovementRequest request) {
+    public SendForApprovementResponse sendForApprovement(@RequestBody SendForApprovementRequest request) {
 
 
         return makerService.sendForApprovement(request);
