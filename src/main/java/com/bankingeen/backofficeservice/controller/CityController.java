@@ -23,5 +23,6 @@ public class CityController {
     public ResponseEntity<List<City>> getCities() {
         List<City> cityList = cityService.getCityList();
         return ResponseEntity.ok(cityList);
+
     }
 }
