@@ -10,7 +10,6 @@ import com.bankingeen.backofficeservice.model.entity.ScenarioTableColumn;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -63,7 +62,6 @@ public class AdminService {
         List<ScenarioTableColumn> scenarioTableColumns = request.getColumns().stream()
                 .map(i -> new ScenarioTableColumn(table, scenario, i.getColumnName()
                         , i.isEditable(), i.isVisible(), i.isPrimaryKey())).toList();
-
         scenario.setScenarioTableColumns(scenarioTableColumns);
 
         scenarioRepository.save(scenario);
