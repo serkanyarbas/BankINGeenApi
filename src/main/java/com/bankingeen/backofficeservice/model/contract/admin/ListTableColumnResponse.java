@@ -8,7 +8,6 @@ import java.util.List;
 
 public class ListTableColumnResponse extends BaseResponse {
 
-    @Getter
-    @Setter
+    @Getter @Setter
     private List<ColumnDTO> tableColumns;
 }

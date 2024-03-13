@@ -5,7 +5,6 @@ import lombok.Setter;
 
 public class ListTableColumnRequest extends BaseRequest{
 
-    @Getter
-    @Setter
+    @Getter @Setter
     private String tableName;
 }

@@ -7,7 +7,6 @@ import java.util.List;
 
 public class ListTableResponse extends BaseResponse{
 
-    @Getter
-    @Setter
+    @Getter @Setter
     private List<String> tableNames;
 }
