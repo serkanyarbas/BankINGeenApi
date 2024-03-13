@@ -1,6 +1,6 @@
 package com.bankingeen.backofficeservice.controller;
 
-import com.bankingeen.backofficeservice.model.admin.*;
+import com.bankingeen.backofficeservice.model.contract.admin.*;
 import com.bankingeen.backofficeservice.service.AdminService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
