@@ -1,6 +1,6 @@
 package com.bankingeen.backofficeservice.model.contract.admin;
 
-import com.bankingeen.backofficeservice.model.Column;
+import com.bankingeen.backofficeservice.model.contract.common.Column;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,4 +16,11 @@ public class ScenarioCreateRequest extends BaseRequest{
 
     @Getter @Setter
     private List<Column> columns;
+
+    @Getter @Setter
+    private int makerGroupId;
+
+    @Getter @Setter
+    private int checkerGroupId;
+
 }

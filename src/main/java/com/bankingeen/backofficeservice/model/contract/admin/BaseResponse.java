@@ -1,6 +1,6 @@
 package com.bankingeen.backofficeservice.model.contract.admin;
 
-import com.bankingeen.backofficeservice.model.contract.ResponseHeader;
+import com.bankingeen.backofficeservice.model.contract.common.ResponseHeader;
 import lombok.Getter;
 import lombok.Setter;
 

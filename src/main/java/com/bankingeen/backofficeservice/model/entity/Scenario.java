@@ -27,6 +27,12 @@ public class Scenario {
     @Column(name = "FILTER_QUERY")
     private String filterQuery;
 
+    @Column(name = "MAKER_GROUP_ID")
+    private int makerGroupId;
+
+    @Column(name = "CHECKER_GROUP_ID")
+    private int checkerGroupId;
+
     @OneToMany(mappedBy = "scenario")
     private List<ScenarioTableColumn> scenarioTableColumns;
 }

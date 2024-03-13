@@ -33,7 +33,8 @@ public class ScenarioTableColumn {
     @Column(name = "IS_PRIMARY_KEY")
     private boolean isPrimaryKey;
 
-    public ScenarioTableColumn(BOTable table, Scenario scenario, String columnName, boolean editable, boolean visible, boolean isPrimaryKey) {
+    public ScenarioTableColumn(BOTable table, Scenario scenario, String columnName
+            , boolean editable, boolean visible, boolean isPrimaryKey) {
 
         this.table = table;
         this.scenario = scenario;
