@@ -2,6 +2,7 @@ package com.bankingeen.backofficeservice.service;
 
 import com.bankingeen.backofficeservice.jpa.CityRepository;
 import com.bankingeen.backofficeservice.model.*;
+import com.bankingeen.backofficeservice.model.admin.*;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
