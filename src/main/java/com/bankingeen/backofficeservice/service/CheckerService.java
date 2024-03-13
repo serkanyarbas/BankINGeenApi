@@ -24,14 +24,18 @@ public class CheckerService {
 
     private final ScenarioRepository scenarioRepository;
 
+    private ScenarioTableColumnRepository scenarioTableColumnRepository;
+
     private final ApprovementRepository approvementRepository;
 
     public CheckerService(BOUserRepository boUserRepository
             , ScenarioRepository scenarioRepository
+            , ScenarioTableColumnRepository scenarioTableColumnRepository
             , ApprovementRepository approvementRepository
     ) {
         this.boUserRepository = boUserRepository;
         this.scenarioRepository = scenarioRepository;
+        this.scenarioTableColumnRepository = scenarioTableColumnRepository;
         this.approvementRepository = approvementRepository;
     }
 
@@ -81,6 +85,18 @@ public class CheckerService {
 
         approvementRepository.save(approvement);
 
+        if (request.isApproved()) {
+
+            updateContent(approvement.getScenarioId(), approvement.getNewContent());
+        }
+
         return response;
+    }
+
+    private void updateContent(int scenarioId, String newContent) {
+
+        var scenario = scenarioRepository.findById((long) scenarioId);
+        // TODO : yapılacak.
+
     }
 }
