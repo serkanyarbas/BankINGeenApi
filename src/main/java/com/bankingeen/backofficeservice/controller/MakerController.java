@@ -1,9 +1,6 @@
 package com.bankingeen.backofficeservice.controller;
 
-import com.bankingeen.backofficeservice.model.contract.maker.GetScenarioRecordListRequest;
-import com.bankingeen.backofficeservice.model.contract.maker.GetScenarioRecordListResponse;
-import com.bankingeen.backofficeservice.model.contract.maker.GetScenarioListRequest;
-import com.bankingeen.backofficeservice.model.contract.maker.GetScenarioListResponse;
+import com.bankingeen.backofficeservice.model.contract.maker.*;
 import com.bankingeen.backofficeservice.service.MakerService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,5 +28,12 @@ public class MakerController {
 
 
         return makerService.getScenarioRecordList(request);
+    }
+
+    @PostMapping(value = "/approvement/v1")
+    public SendForApprovementResponse sendForApprovement(SendForApprovementRequest request) {
+
+
+        return makerService.sendForApprovement(request);
     }
 }

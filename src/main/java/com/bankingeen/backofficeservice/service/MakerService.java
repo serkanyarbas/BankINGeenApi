@@ -1,5 +1,7 @@
 package com.bankingeen.backofficeservice.service;
 
+import com.bankingeen.backofficeservice.model.contract.maker.SendForApprovementRequest;
+import com.bankingeen.backofficeservice.model.contract.maker.SendForApprovementResponse;
 import com.bankingeen.backofficeservice.model.contract.maker.GetScenarioRecordListRequest;
 import com.bankingeen.backofficeservice.model.contract.maker.GetScenarioRecordListResponse;
 import com.bankingeen.backofficeservice.model.contract.maker.GetScenarioListRequest;
@@ -15,6 +17,11 @@ public class MakerService {
     }
 
     public GetScenarioRecordListResponse getScenarioRecordList(GetScenarioRecordListRequest request) {
+
+        return null;
+    }
+
+    public SendForApprovementResponse sendForApprovement(SendForApprovementRequest request) {
 
         return null;
     }
