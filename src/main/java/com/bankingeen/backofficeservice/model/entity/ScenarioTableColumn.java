@@ -4,7 +4,7 @@ package com.bankingeen.backofficeservice.model.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
-@Table(name = "SCENARIO_TABLE_COLUMN",schema = "bankingeen")
+@Table(name = "scenario_table_column",schema = "bankingeen")
 @Entity
 @Data
 public class ScenarioTableColumn {

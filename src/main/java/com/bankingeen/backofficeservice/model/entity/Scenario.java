@@ -5,7 +5,7 @@ import lombok.Data;
 
 import java.util.List;
 
-@Table(name = "SCENARIO",schema = "bankingeen")
+@Table(name = "scenario",schema = "bankingeen")
 @Entity
 @Data
 public class Scenario {
