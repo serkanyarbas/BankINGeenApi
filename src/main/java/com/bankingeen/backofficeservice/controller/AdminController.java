@@ -23,14 +23,14 @@ public class AdminController {
 
     @CrossOrigin(origins = "*")
     @PostMapping(value = "/table/column/list/v1")
-    public ListTableColumnResponse getTableColumns(ListTableColumnRequest request) {
+    public ListTableColumnResponse getTableColumns(@RequestBody ListTableColumnRequest request) {
 
         return adminService.getTableColumns(request);
     }
 
     @CrossOrigin(origins = "*")
     @PostMapping(value = "/scenario/create/v1")
-    public ScenarioCreateResponse scenarioCreate(ScenarioCreateRequest request) {
+    public ScenarioCreateResponse scenarioCreate(@RequestBody ScenarioCreateRequest request) {
 
         return adminService.scenarioCreate(request);
     }

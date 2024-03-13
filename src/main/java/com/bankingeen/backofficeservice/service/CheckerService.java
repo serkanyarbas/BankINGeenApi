@@ -8,9 +8,13 @@ import com.bankingeen.backofficeservice.model.contract.checker.GetApprovementLis
 import com.bankingeen.backofficeservice.model.contract.maker.GetScenarioListRequest;
 import com.bankingeen.backofficeservice.model.contract.maker.GetScenarioListResponse;
 import com.bankingeen.backofficeservice.model.dto.ApprovementDTO;
+import com.bankingeen.backofficeservice.model.dto.RecordColumnDTO;
 import com.bankingeen.backofficeservice.model.dto.ScenarioDTO;
 import com.bankingeen.backofficeservice.model.entity.Approvement;
 import com.bankingeen.backofficeservice.model.entity.ScenarioTableColumn;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
@@ -95,8 +99,23 @@ public class CheckerService {
 
     private void updateContent(int scenarioId, String newContent) {
 
-        var scenario = scenarioRepository.findById((long) scenarioId);
-        // TODO : yapılacak.
+        var scenarioOpt = scenarioRepository.findById((long) scenarioId);
+        var scenario = scenarioOpt.get();
+        var scenarioTableColumns = scenario.getScenarioTableColumns();
 
+        ObjectMapper mapper = new ObjectMapper();
+
+        try {
+            List<RecordColumnDTO> newRecord = mapper.readValue(newContent, new TypeReference<List<RecordColumnDTO>>(){});
+            executeQuery(scenarioTableColumns, newRecord);
+
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void executeQuery(List<ScenarioTableColumn> scenarioTableColumns, List<RecordColumnDTO> newRecord) {
+
+        // TODO : yapılacak.
     }
 }
