@@ -1,26 +1,32 @@
 package com.bankingeen.backofficeservice.service;
 
-import com.bankingeen.backofficeservice.jpa.CityRepository;
+import com.bankingeen.backofficeservice.jpa.BOTableRepository;
+import com.bankingeen.backofficeservice.jpa.ScenarioRepository;
+import com.bankingeen.backofficeservice.jpa.ScenarioTableColumnRepository;
 import com.bankingeen.backofficeservice.model.contract.admin.*;
-import com.bankingeen.backofficeservice.model.entity.City;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class AdminService {
 
-    private final CityRepository cityRepository;
 
-    public AdminService(CityRepository cityRepository){
-        this.cityRepository = cityRepository;
-    }
+    private final BOTableRepository boTableRepository;
 
-    public List<City> getCityList(){
-        return cityRepository.findAll();
+    private final ScenarioRepository scenarioRepository;
+
+    private final ScenarioTableColumnRepository scenarioTableColumnRepository;
+
+    public AdminService(BOTableRepository boTableRepository
+    ,ScenarioRepository scenarioRepository
+    ,ScenarioTableColumnRepository scenarioTableColumnRepository
+    ){
+        this.boTableRepository = boTableRepository;
+        this.scenarioRepository = scenarioRepository;
+        this.scenarioTableColumnRepository = scenarioTableColumnRepository;
     }
 
     public ListTableResponse getTables(ListTableRequest listTableRequest) {
+
 
         return null;
     }

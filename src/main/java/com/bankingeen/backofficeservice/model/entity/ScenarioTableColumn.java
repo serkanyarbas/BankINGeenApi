@@ -13,7 +13,7 @@ public class ScenarioTableColumn {
     @Column(name = "ID")
     private Long id;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "TABLE_ID")
     private BOTable table;
 
