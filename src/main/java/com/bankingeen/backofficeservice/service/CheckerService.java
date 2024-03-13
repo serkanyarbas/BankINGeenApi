@@ -9,6 +9,8 @@ import com.bankingeen.backofficeservice.model.contract.maker.GetScenarioListRequ
 import com.bankingeen.backofficeservice.model.contract.maker.GetScenarioListResponse;
 import com.bankingeen.backofficeservice.model.dto.ApprovementDTO;
 import com.bankingeen.backofficeservice.model.dto.ScenarioDTO;
+import com.bankingeen.backofficeservice.model.entity.Approvement;
+import com.bankingeen.backofficeservice.model.entity.ScenarioTableColumn;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
@@ -47,9 +49,17 @@ public class CheckerService {
 
         var roleId = user.getRoleId();
 
-        var scenarioListByRoleId = scenarioRepository.findByMakerRoleId(roleId);
+        var scenarioListByRoleId = scenarioRepository.findByCheckerRoleId(roleId);
 
         List<ApprovementDTO> approvementList = new ArrayList();
+
+        for(var scenario: scenarioListByRoleId){
+            List<Approvement> approvements = approvementRepository.findByScenarioId(scenario.getId());
+            List<ApprovementDTO> approvementDTOByScenario = approvements.stream()
+                    .map(i -> new ApprovementDTO(i.getOldContent(), i.getNewContent(), i.getMakerUserId(),i.getCheckerUserId(),i.getStatus())).toList();
+            approvementList.addAll(approvementDTOByScenario);
+        }
+        response.setApprovementList(approvementList);
 
         return response;
     }

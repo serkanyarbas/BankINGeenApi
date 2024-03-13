@@ -75,8 +75,8 @@ public class AdminService {
                 .map(i -> new ScenarioTableColumn(table, scenario, i.columnName()
                         , i.isEditable(), i.isVisible(), i.isPrimaryKey())).toList();
         scenario.setScenarioTableColumns(scenarioTableColumns);
-        scenario.setMakerGroupId(request.getMakerGroupId());
-        scenario.setCheckerGroupId(request.getCheckerGroupId());
+        scenario.setMakerRoleId(request.getMakerGroupId());
+        scenario.setCheckerRoleId(request.getCheckerGroupId());
 
         scenarioRepository.save(scenario);
 

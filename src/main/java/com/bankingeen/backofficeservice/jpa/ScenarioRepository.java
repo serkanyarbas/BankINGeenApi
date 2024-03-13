@@ -12,4 +12,7 @@ import java.util.List;
 public interface ScenarioRepository extends JpaRepository<Scenario,Long>, JpaSpecificationExecutor<Scenario> {
 
     List<Scenario> findByMakerRoleId(int roleId);
+
+    List<Scenario> findByCheckerRoleId(int roleId);
+
 }
