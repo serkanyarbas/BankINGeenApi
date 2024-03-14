@@ -9,4 +9,8 @@ public class LoginResponse extends BaseResponse {
     @Getter
     @Setter
     private int roleId;
+
+    @Getter
+    @Setter
+    private String userId;
 }
