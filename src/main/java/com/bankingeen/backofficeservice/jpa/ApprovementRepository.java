@@ -14,4 +14,5 @@ public interface ApprovementRepository extends JpaRepository<Approvement,Long>, 
 
       List<Approvement> findByScenarioId(Long scenarioId);
 
+    List<Approvement> findByScenarioIdAndStatus(Long id, String status);
 }

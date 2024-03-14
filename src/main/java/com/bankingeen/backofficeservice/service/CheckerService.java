@@ -63,7 +63,7 @@ public class CheckerService {
         List<ApprovementDTO> approvementList = new ArrayList();
 
         for(var scenario: scenarioListByRoleId){
-            List<Approvement> approvements = approvementRepository.findByScenarioId(scenario.getId());
+            List<Approvement> approvements = approvementRepository.findByScenarioIdAndStatus(scenario.getId(),"Pending");
             var columnDTOList = generateScenarioColumnMetaData(scenario.getScenarioTableColumns());
             List<ApprovementDTO> approvementDTOByScenario = approvements.stream()
                     .map(i -> new ApprovementDTO(i.getId(), toContent(i.getOldContent()), toContent(i.getNewContent())
@@ -98,7 +98,7 @@ public class CheckerService {
         }
 
         var approvement = approvementOpt.get();
-        approvement.setStatus(request.isApproved() ? "A" : "D");
+        approvement.setStatus(request.isApproved() ? "Approved" : "Denied");
         approvement.setCheckerUserId(request.getCheckerUserId());
 
         approvementRepository.save(approvement);
