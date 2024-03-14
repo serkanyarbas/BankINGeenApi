@@ -6,6 +6,7 @@ import com.bankingeen.backofficeservice.jpa.ScenarioRepository;
 import com.bankingeen.backofficeservice.jpa.ScenarioTableColumnRepository;
 import com.bankingeen.backofficeservice.model.contract.admin.*;
 import com.bankingeen.backofficeservice.model.dto.ColumnDTO;
+import com.bankingeen.backofficeservice.model.dto.ScenarioDTO;
 import com.bankingeen.backofficeservice.model.entity.BOTable;
 import com.bankingeen.backofficeservice.model.entity.Scenario;
 import com.bankingeen.backofficeservice.model.entity.ScenarioTableColumn;
@@ -91,8 +92,15 @@ public class AdminService {
 
     public GetScenarioListResponse getScenarioList(GetScenarioListRequest request) {
 
+        var response = new GetScenarioListResponse();
+
         var scenarioList = scenarioRepository.findAll();
 
-        return null;
+        var scenarioDTOList = scenarioList.stream().map(i -> new ScenarioDTO(i.getId(), i.getScenarioName()
+                , i.getTable().getName(), i.getFilterQuery())).toList();
+
+        response.setScenarioList(scenarioDTOList);
+
+        return response;
     }
 }
