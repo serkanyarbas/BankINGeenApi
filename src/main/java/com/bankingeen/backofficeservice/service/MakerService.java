@@ -154,8 +154,8 @@ public class MakerService {
         ObjectMapper objectMapper = new ObjectMapper();
 
         try {
-            entity.setNewContent(objectMapper.writeValueAsString(request.getNewRecords()));
-            entity.setOldContent(objectMapper.writeValueAsString(request.getOldRecords()));
+            entity.setNewContent(objectMapper.writeValueAsString(request.getNewContent()));
+            entity.setOldContent(objectMapper.writeValueAsString(request.getOldContent()));
 
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);

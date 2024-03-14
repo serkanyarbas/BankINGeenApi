@@ -5,5 +5,6 @@ import java.io.Serializable;
 public record RecordColumnDTO(
         String columnName,
         String columnValue
+
 ) implements Serializable {
 }

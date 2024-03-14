@@ -64,12 +64,24 @@ public class CheckerService {
         for(var scenario: scenarioListByRoleId){
             List<Approvement> approvements = approvementRepository.findByScenarioId(scenario.getId());
             List<ApprovementDTO> approvementDTOByScenario = approvements.stream()
-                    .map(i -> new ApprovementDTO(i.getOldContent(), i.getNewContent(), i.getMakerUserId(),i.getCheckerUserId(),i.getStatus())).toList();
+                    .map(i -> new ApprovementDTO(toContent(i.getOldContent()), toContent(i.getNewContent())
+                            , i.getMakerUserId(),i.getCheckerUserId(),i.getStatus())).toList();
             approvementList.addAll(approvementDTOByScenario);
         }
         response.setApprovementList(approvementList);
 
         return response;
+    }
+
+    private List<RecordColumnDTO> toContent(String content) {
+
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            return mapper.readValue(content, new TypeReference<List<RecordColumnDTO>>(){});
+
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public ApproveDeclineResponse approveDecline(ApproveDeclineRequest request) {

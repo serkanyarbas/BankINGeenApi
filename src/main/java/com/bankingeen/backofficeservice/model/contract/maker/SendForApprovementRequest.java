@@ -13,10 +13,10 @@ public class SendForApprovementRequest extends BaseRequest {
     private int scenarioId;
 
     @Getter @Setter
-    private List<RecordColumnDTO> oldRecords;
+    private List<RecordColumnDTO> oldContent;
 
     @Getter @Setter
-    private List<RecordColumnDTO> newRecords;
+    private List<RecordColumnDTO> newContent;
 
     @Getter @Setter
     private int makerUserId;
