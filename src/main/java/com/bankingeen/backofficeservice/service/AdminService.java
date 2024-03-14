@@ -88,4 +88,11 @@ public class AdminService {
 
         return response;
     }
+
+    public GetScenarioListResponse getScenarioList(GetScenarioListRequest request) {
+
+        var scenarioList = scenarioRepository.findAll();
+
+        return null;
+    }
 }

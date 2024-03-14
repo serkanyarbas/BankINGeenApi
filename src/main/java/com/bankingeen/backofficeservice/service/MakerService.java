@@ -16,7 +16,6 @@ import com.bankingeen.backofficeservice.model.entity.Scenario;
 import com.bankingeen.backofficeservice.model.entity.ScenarioTableColumn;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.hibernate.dialect.JsonHelper;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 

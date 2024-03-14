@@ -34,4 +34,11 @@ public class AdminController {
 
         return adminService.scenarioCreate(request);
     }
+
+    @CrossOrigin(origins = "*")
+    @PostMapping(value = "/scenario/list/v1")
+    public GetScenarioListResponse getScenarioList(@RequestBody GetScenarioListRequest request) {
+
+        return adminService.getScenarioList(request);
+    }
 }
