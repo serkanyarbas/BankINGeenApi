@@ -84,6 +84,7 @@ public class AdminService {
         scenario.setCheckerRoleId(request.getCheckerGroupId());
 
         scenarioRepository.save(scenario);
+        scenarioTableColumnRepository.saveAll(scenarioTableColumns);
 
         return response;
     }
