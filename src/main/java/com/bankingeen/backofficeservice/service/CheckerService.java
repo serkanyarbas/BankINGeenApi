@@ -8,6 +8,7 @@ import com.bankingeen.backofficeservice.model.contract.checker.GetApprovementLis
 import com.bankingeen.backofficeservice.model.contract.maker.GetScenarioListRequest;
 import com.bankingeen.backofficeservice.model.contract.maker.GetScenarioListResponse;
 import com.bankingeen.backofficeservice.model.dto.ApprovementDTO;
+import com.bankingeen.backofficeservice.model.dto.ColumnDTO;
 import com.bankingeen.backofficeservice.model.dto.RecordColumnDTO;
 import com.bankingeen.backofficeservice.model.dto.ScenarioDTO;
 import com.bankingeen.backofficeservice.model.entity.Approvement;
@@ -63,9 +64,10 @@ public class CheckerService {
 
         for(var scenario: scenarioListByRoleId){
             List<Approvement> approvements = approvementRepository.findByScenarioId(scenario.getId());
+            var columnDTOList = generateScenarioColumnMetaData(scenario.getScenarioTableColumns());
             List<ApprovementDTO> approvementDTOByScenario = approvements.stream()
-                    .map(i -> new ApprovementDTO(toContent(i.getOldContent()), toContent(i.getNewContent())
-                            , i.getMakerUserId(),i.getCheckerUserId(),i.getStatus())).toList();
+                    .map(i -> new ApprovementDTO(i.getId(), toContent(i.getOldContent()), toContent(i.getNewContent())
+                            , i.getMakerUserId(),i.getCheckerUserId(),i.getStatus(),columnDTOList)).toList();
             approvementList.addAll(approvementDTOByScenario);
         }
         response.setApprovementList(approvementList);
@@ -129,5 +131,14 @@ public class CheckerService {
     private void executeQuery(List<ScenarioTableColumn> scenarioTableColumns, List<RecordColumnDTO> newRecord) {
 
         // TODO : yapılacak.
+    }
+
+    private List<ColumnDTO> generateScenarioColumnMetaData(List<ScenarioTableColumn> scenarioTableColumnList) {
+
+        return scenarioTableColumnList
+                .stream()
+                .filter(ScenarioTableColumn::isVisible)
+                .map(stc -> new ColumnDTO(stc.getColumnName(), stc.isPrimaryKey(), stc.isEditable(), true)).toList();
+
     }
 }
