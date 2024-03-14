@@ -110,7 +110,7 @@ public class MakerService {
 
         for (int i = 0; i < dynamicDataList.size(); i++) {
 
-            var dynamicData = dynamicDataList.get(i).split(",");
+            var dynamicData = dynamicDataList.get(i);
 
             List<ColumnContentDTO> columnContentList = getColumnContentList(dynamicData, tableColumnNameList);
 
@@ -120,7 +120,7 @@ public class MakerService {
         return scenarioRecordDTOS;
     }
 
-    private static List<ColumnContentDTO> getColumnContentList(String[] dynamicData, List<String> tableColumnNameList) {
+    private static List<ColumnContentDTO> getColumnContentList(Object[] dynamicData, List<String> tableColumnNameList) {
 
         List<ColumnContentDTO> columnContentList = new ArrayList<>();
 
@@ -128,7 +128,7 @@ public class MakerService {
 
             var columnValue = dynamicData[j];
             var columnName = tableColumnNameList.get(j);
-            ColumnContentDTO columnContentDTO = new ColumnContentDTO(columnName, columnValue, "varchar");
+            ColumnContentDTO columnContentDTO = new ColumnContentDTO(columnName, columnValue.toString(), "varchar");
             columnContentList.add(columnContentDTO);
         }
         return columnContentList;

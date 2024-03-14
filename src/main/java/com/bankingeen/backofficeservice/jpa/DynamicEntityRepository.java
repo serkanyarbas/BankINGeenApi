@@ -16,7 +16,7 @@ public class DynamicEntityRepository {
         this.entityManager = entityManager;
     }
 
-    public List<String> getDynamicTableData(String tableName, String schema) {
+    public List<Object[]> getDynamicTableData(String tableName, String schema) {
         String sql = "SELECT * FROM " + schema + "." + tableName;
         Query query = entityManager.createNativeQuery(sql);
         return query.getResultList();

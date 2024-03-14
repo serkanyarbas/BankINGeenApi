@@ -16,7 +16,7 @@ public class MakerController {
 
     @CrossOrigin(origins = "*")
     @PostMapping(value = "/scenario/list/v1")
-    public GetScenarioListResponse getScenarioList(GetScenarioListRequest request) {
+    public GetScenarioListResponse getScenarioList(@RequestBody GetScenarioListRequest request) {
 
         return makerService.getScenarioList(request);
     }
