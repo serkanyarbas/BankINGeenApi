@@ -150,6 +150,7 @@ public class MakerService {
         Approvement entity = new Approvement();
         entity.setScenarioId(request.getScenarioId());
         entity.setMakerUserId(request.getMakerUserId());
+        entity.setStatus("Pending");
 
         ObjectMapper objectMapper = new ObjectMapper();
 
