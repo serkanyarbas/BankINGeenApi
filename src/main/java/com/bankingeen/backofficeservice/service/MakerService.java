@@ -137,7 +137,7 @@ public class MakerService {
 
         return scenarioTableColumnList
                 .stream()
-                .filter(ScenarioTableColumn::isVisible)
+                //.filter(ScenarioTableColumn::isVisible)
                 .map(stc -> new ColumnDTO(stc.getColumnName(), stc.isPrimaryKey(), stc.isEditable(), true)).toList();
 
     }
