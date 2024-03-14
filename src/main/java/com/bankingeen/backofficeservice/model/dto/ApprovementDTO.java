@@ -7,7 +7,9 @@ import lombok.Setter;
 import java.util.List;
 
 public record ApprovementDTO(
-        List<RecordColumnDTO> oldContent
+
+        Long approvementId
+        ,List<RecordColumnDTO> oldContent
 
         ,List<RecordColumnDTO> newContent
 

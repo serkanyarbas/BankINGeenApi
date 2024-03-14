@@ -66,7 +66,7 @@ public class CheckerService {
             List<Approvement> approvements = approvementRepository.findByScenarioId(scenario.getId());
             var columnDTOList = generateScenarioColumnMetaData(scenario.getScenarioTableColumns());
             List<ApprovementDTO> approvementDTOByScenario = approvements.stream()
-                    .map(i -> new ApprovementDTO(toContent(i.getOldContent()), toContent(i.getNewContent())
+                    .map(i -> new ApprovementDTO(i.getId(), toContent(i.getOldContent()), toContent(i.getNewContent())
                             , i.getMakerUserId(),i.getCheckerUserId(),i.getStatus(),columnDTOList)).toList();
             approvementList.addAll(approvementDTOByScenario);
         }
