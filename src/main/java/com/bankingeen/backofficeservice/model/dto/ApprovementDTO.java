@@ -15,5 +15,8 @@ public record ApprovementDTO(
 
         ,int checkerUserId
 
-        ,String status) {
+        ,String status
+
+        ,List<ColumnDTO> columnMeta
+) {
 }
